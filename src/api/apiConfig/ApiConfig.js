@@ -1,5 +1,5 @@
 
-const appUrl = "http://localhost:4001";
+const appUrl = "http://3.13.64.97:4001";
 // const appUrl = "http://192.168.1.18:3001";
 
 export const ApiConfig = {
