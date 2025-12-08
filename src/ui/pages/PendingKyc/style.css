@@ -1,0 +1,40 @@
+.verifybtn{
+    border: 1px solid #283777;
+    background: #283777;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+
+.btn-indigo {
+    color: #fff;
+    background-color: #5800e8;
+    border-color: #5800e8;
+}
+
+.btn-white-10 {
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.btnCSV{
+   
+    width: auto;
+    color: #fff;
+   
+    float: right;
+    border: 0;
+  
+}
+
+
+.btnCSV:hover{
+   border: 0;
+    color: rgb(199, 199, 224);
+    background-color: #5a08dd;
+    border-color: #123fa1;
+}
