@@ -1,5 +1,5 @@
 
-const appUrl = "https://backend.gatbits.com";
+const appUrl = "http://localhost:4001";
 // const appUrl = "http://192.168.1.18:3001";
 
 export const ApiConfig = {

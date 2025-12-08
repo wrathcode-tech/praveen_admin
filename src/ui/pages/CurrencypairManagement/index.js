@@ -162,7 +162,7 @@ const CurrencypairManagement = () => {
     { name: "Buy Price", wrap: true, selector: row => row.buy_price.toFixed(5), },
     { name: "Availablity", wrap: true, selector: row => row.available, },
     { name: "Action", wrap: true, selector: linkFollow, },
-    { name: "Trading Bot", wrap: true, selector: TradingBot, },
+    // { name: "Trading Bot", wrap: true, selector: TradingBot, },
   ];
 
 

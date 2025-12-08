@@ -5,12 +5,13 @@ import RejectedCoinList from "../../ui/pages/CoinPortalManagement/RejectedCoinLi
 const TAG = "AuthService";
 
 const AuthService = {
-  login: async (otp, password) => {
+  login: async (email, password, verificationCode) => {
     const { baseUrl, login } = ApiConfig;
     const url = baseUrl + login;
     const params = {
-      verification_code: +otp,
+      email_or_phone: email,
       password: password,
+      verification_code: verificationCode,
     };
 
     const headers = {
@@ -20,11 +21,10 @@ const AuthService = {
   },
 
   getOtp: async (email) => {
-    const { baseUser, getLoginOtp } = ApiConfig;
-    const url = baseUser + getLoginOtp;
+    const { baseAdmin, getLoginOtp } = ApiConfig;
+    const url = baseAdmin + getLoginOtp;
     const params = {
       email_or_phone: email,
-      resend: true
     };
     const headers = {
       "Content-Type": "application/json",

@@ -131,6 +131,7 @@ const CurrencyManagement = () => {
     formData.append('issueDate', inputData?.issueDate ? inputData?.issueDate : item?.issueDate);
     formData.append('maker_fee', inputData?.maker_fee ? inputData?.maker_fee : item?.maker_fee);
     formData.append('taker_fee', inputData?.taker_fee ? inputData?.taker_fee : item?.taker_fee);
+    formData.append('p2p_status', inputData?.p2p_status ? inputData?.p2p_status : item?.p2p_status);
     formData.append('min_withdrawal', inputData?.minWidthraw ? inputData?.minWidthraw : item?.min_withdrawal);
     formData.append('max_withdrawal', inputData?.max_withdraw ? inputData?.max_withdraw : item?.max_withdrawal);
     formData.append('min_deposit', inputData?.min_deposit ? inputData?.min_deposit : item?.min_deposit);
@@ -359,6 +360,19 @@ const CurrencyManagement = () => {
                             <label className="small mb-1">Deposit Status</label>
                             <select className="form-control  form-control-solid" type="text"
                               name="deposit_status" value={inputData.id == item?._id ? inputData.deposit_status : item?.deposit_status}
+                              onChange={(e) => handleInputChange(e, item?._id)}>
+                              <option value='ACTIVE'>
+                                Active
+                              </option>
+                              <option value='INACTIVE'>
+                                Inactive
+                              </option>
+                            </select>
+                          </div>
+                          <div className="col-md-4 form-group  mb-1">
+                            <label className="small mb-1">P2P Status</label>
+                            <select className="form-control  form-control-solid" type="text"
+                              name="p2p_status" value={inputData.id == item?._id ? inputData.p2p_status : item?.p2p_status}
                               onChange={(e) => handleInputChange(e, item?._id)}>
                               <option value='ACTIVE'>
                                 Active
