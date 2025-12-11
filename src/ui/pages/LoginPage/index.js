@@ -106,12 +106,7 @@ const LoginPage = () => {
             <div id="layoutAuthentication_content">
                 <div className="login_section">
                     <main className="login-card">
-                        {/* <div class="left_side_cnt">
-                            <h1>Welcome to <span>gatbits</span> Admin Dashboard</h1>
-                            <div class="logo_vector">
-                                       <img src="/assets/img/logo_dark2.svg" className="img-fluid" alt="" width='300' />
-                            </div>
-                        </div> */}
+                     
 
                         <div className="px-4 login_right_s">
 
@@ -152,7 +147,7 @@ const LoginPage = () => {
                                                             type="button"
                                                             onClick={handleGetOtp}
                                                             className="btn btn-block btn-l btn_admin" 
-                                                            style={{ backgroundColor: "rgb(219, 165, 12)", color: "white" }}>
+                                                            style={{ backgroundColor: "rgb(52 51 50)", color: "white" }}>
                                                             <span>GET OTP</span>
                                                         </button>
                                                     </div>
@@ -213,7 +208,7 @@ const LoginPage = () => {
                                                     <button 
                                                         type="button" 
                                                         className="btn btn-block w-100 btn-xl btn_admin mt-2 px-5" 
-                                                        style={{ backgroundColor: "#dba50c", fontSize: "20px", color: "white" }}
+                                                        style={{ backgroundColor: "rgb(52 51 50)", fontSize: "20px", color: "white" }}
                                                         onClick={handleLogin}>
                                                         Login
                                                     </button>

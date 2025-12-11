@@ -94,124 +94,6 @@ const DashboardPage = () => {
 
 
 
-                                {/* {permissions.includes(5) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('adminBank') ? 'active' : ''}`} to="adminBank" onClick={() => { setActived('adminBank'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i class="fas fa-user-slash"></i></div>
-                                        Admin Bank
-                                    </Link>
-                                    : null
-                                }
-                                {permissions.includes(5) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('UserBank') ? 'active' : ''}`} to="UserBank" onClick={() => { setActived('UserBank'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i class="fa fa-university" aria-hidden="true"></i>
-                                        </div>
-                                        User Bank Management
-                                    </Link>
-                                    : null
-                                }
- */}
-
-                                {/* {permissions.includes(21) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('AddPartner') || actived?.includes('partnership') || actived?.includes('PartnershipWithdrawal') || actived?.includes('PartnerStakePayout')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapsePartner" aria-expanded="false" aria-controls="collapsePartner">
-                                            <div className="nav-link-icon"><i class="fas fa-handshake"></i></div>
-                                            Earning Manager
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-
-                                        <div className="collapse" id="collapsePartner" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
-
-                                                {(permissions.includes(21) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('AddPartner') ? 'active' : ''}`} to="AddPartner" onClick={() => { setActived('AddPartner'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Add Package
-                                                </Link>}
-                                                {(permissions.includes(21) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('partnership') ? 'active' : ''}`} to="partnership" onClick={() => { setActived('partnership'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Investors List
-                                                </Link>}
-                                                {(permissions.includes(21) || userType === '1') && <Link className={`nav-link  ${actived?.includes('PartnershipWithdrawal') ? 'active' : ''}`} to="PartnershipWithdrawal" onClick={() => { setActived('PartnershipWithdrawal'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>Investor Payout</Link>
-                                                }
-                                                {(permissions.includes(21) || userType === '1') && <Link className={`nav-link  ${actived?.includes('PartnerStakePayout') ? 'active' : ''}`} to="PartnerStakePayout" onClick={() => { setActived('PartnerStakePayout'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>Payout List</Link>}
-
-
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                } */}
-
-                                {/* {permissions.includes(22) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('affiliateList') || actived?.includes('roiDistribution') || actived?.includes('affiliatePayout')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseaffiliate" aria-expanded="false" aria-controls="collapseaffiliate">
-                                            <div className="nav-link-icon"><i class="fas fa-handshake"></i></div>
-                                            Affiliate Manager
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-                                        <div className="collapse" id="collapseaffiliate" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
-
-                                                {(permissions.includes(22) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('affiliateList') ? 'active' : ''}`} to="affiliateList" onClick={() => { setActived('affiliateList'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Affiliate List
-                                                </Link>}
-
-
-                                                {(permissions.includes(22) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('roiDistribution') ? 'active' : ''}`} to="roiDistribution" onClick={() => { setActived('roiDistribution'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    ROI Distribution
-                                                </Link>}
-
-                                                {(permissions.includes(22) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('affiliatePayout') ? 'active' : ''}`} to="affiliatePayout" onClick={() => { setActived('affiliatePayout'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Payout List
-                                                </Link>}
-
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                } */}
-                                {/* {permissions.includes(23) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('createPackage') || actived?.includes('fundList') || actived?.includes('userPackageList') || actived?.includes('packageList') || actived?.includes('referralList')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseArbitrageBot" aria-expanded="false" aria-controls="collapseArbitrageBot">
-                                            <div className="nav-link-icon"><i class="fa-solid fa-robot"></i></div>
-                                            Arbitrage Bot
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-
-                                        <div className="collapse" id="collapseArbitrageBot" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
-
-                                                {(permissions.includes(23) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('createPackage') ? 'active' : ''}`} to="createPackage" onClick={() => { setActived('createPackage'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Create Package
-                                                </Link>}
-
-                                                {(permissions.includes(23) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('TradeBot') ? 'active' : ''}`} to="TradeBot" onClick={() => { setActived('TradeBot'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Bot Trade Management
-                                                </Link>}
-                                                {(permissions.includes(23) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('packageList') ? 'active' : ''}`} to="packageList" onClick={() => { setActived('packageList'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    Package List
-                                                </Link>}
-                                                {(permissions.includes(22) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('userPackageList') ? 'active' : ''}`} to="userPackageList" onClick={() => { setActived('userPackageList'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    User Package List
-                                                </Link>}
-                                                {(permissions.includes(23) || userType === '1') && <Link className={`nav-link collapsed ${actived?.includes('fundList') ? 'active' : ''}`} to="fundList" onClick={() => { setActived('fundList'); setIsSidebar(true); }}>
-                                                    <div className="nav-link-icon"><i className="fa fa-user-friends"></i></div>
-                                                    User Fund List
-                                                </Link>}
-                                             
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                } */}
 
                                 {permissions.includes(8) || userType === '1' ?
                                     <Link className={`nav-link collapsed ${actived?.includes('coinListDetails') ? 'active' : ''}`} to="coinListDetails" onClick={() => { setActived('coinListDetails'); setIsSidebar(true); }}>
@@ -239,13 +121,7 @@ const DashboardPage = () => {
                                     : null
                                 }
 
-                                {permissions.includes(10) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('BonusManagement') ? 'active' : ''}`} onClick={() => { setActived('BonusManagement'); setIsSidebar(true); }} to="BonusManagement">
-                                        <div className="nav-link-icon"><i className="fa fa-prescription"></i></div>
-                                        Bonus Management
-                                    </Link>
-                                    : null
-                                }
+
                                 {permissions.includes(11) || userType === '1' ?
                                     <>
                                         <div className={`nav-link collapsed ${(actived?.includes('fundsDManagement') || actived?.includes('FundsPendingDeposit') || actived?.includes('FundsCancelledDeposit')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseFundsManagement" aria-expanded="false" aria-controls="collapseSubAdmin">
@@ -272,143 +148,133 @@ const DashboardPage = () => {
                                     : null
                                 }
 
+                                
 
 
-                                {permissions.includes(12) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('fundsManagement') || actived?.includes('FundsPendingWithdrawal') || actived?.includes('FundsCancelledWithdrawal')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapsefundsWithdrawal" aria-expanded="false" aria-controls="collapsefundsWithdrawal">
-                                            <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
-                                            Funds Withdrawal Management
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-                                        <div className="collapse" id="collapsefundsWithdrawal" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
-                                                <Link className={`nav-link  ${actived?.includes('fundsManagement') ? 'active' : ''}`} to="fundsManagement" onClick={() => { setActived('fundsManagement'); setIsSidebar(true); }}>Completed Withdrawal</Link>
+                    {permissions.includes(12) || userType === '1' ?
+                        <>
+                            <div className={`nav-link collapsed ${(actived?.includes('fundsManagement') || actived?.includes('FundsPendingWithdrawal') || actived?.includes('FundsCancelledWithdrawal')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapsefundsWithdrawal" aria-expanded="false" aria-controls="collapsefundsWithdrawal">
+                                <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
+                                Funds Withdrawal Management
+                                <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </div>
+                            <div className="collapse" id="collapsefundsWithdrawal" data-bs-parent="#accordionSidenav">
+                                <nav className="sidenav-menu-nested nav">
+                                    <Link className={`nav-link  ${actived?.includes('fundsManagement') ? 'active' : ''}`} to="fundsManagement" onClick={() => { setActived('fundsManagement'); setIsSidebar(true); }}>Completed Withdrawal</Link>
 
-                                                <Link className={`nav-link  ${actived?.includes('FundsPendingWithdrawal') ? 'active' : ''}`} to="FundsPendingWithdrawal" onClick={() => { setActived('FundsPendingWithdrawal'); setIsSidebar(true); }}>Pending Withdrawal</Link>
+                                    <Link className={`nav-link  ${actived?.includes('FundsPendingWithdrawal') ? 'active' : ''}`} to="FundsPendingWithdrawal" onClick={() => { setActived('FundsPendingWithdrawal'); setIsSidebar(true); }}>Pending Withdrawal</Link>
 
-                                                <Link className={`nav-link  ${actived?.includes('FundsCancelledWithdrawal') ? 'active' : ''}`} to="FundsCancelledWithdrawal" onClick={() => { setActived('FundsCancelledWithdrawal'); setIsSidebar(true); }}>Cancelled Withdrawal</Link>
+                                    <Link className={`nav-link  ${actived?.includes('FundsCancelledWithdrawal') ? 'active' : ''}`} to="FundsCancelledWithdrawal" onClick={() => { setActived('FundsCancelledWithdrawal'); setIsSidebar(true); }}>Cancelled Withdrawal</Link>
 
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                }
-                                {permissions.includes(12) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('dispute_management') || actived?.includes('orderHistory') || actived?.includes('closePositions') || actived?.includes('futureTradeHistory') || actived?.includes('openPositions')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseP2PManagement" aria-expanded="false" aria-controls="collapseP2PManagement">
-                                            <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
-                                            P2P Management
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-                                        <div className="collapse" id="collapseP2PManagement" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
-                                                <Link className={`nav-link  ${actived?.includes('dispute_management') ? 'active' : ''}`} to="dispute_management" onClick={() => { setActived('dispute_management'); setIsSidebar(true); }}>Dispute Management</Link>
+                                </nav>
+                            </div>
+                        </>
+                        : null
+                    }
+                    {permissions.includes(12) || userType === '1' ?
+                        <>
+                            <div className={`nav-link collapsed ${(actived?.includes('dispute_management') || actived?.includes('orderHistory') || actived?.includes('closePositions') || actived?.includes('futureTradeHistory') || actived?.includes('openPositions')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseP2PManagement" aria-expanded="false" aria-controls="collapseP2PManagement">
+                                <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
+                                P2P Management
+                                <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </div>
+                            <div className="collapse" id="collapseP2PManagement" data-bs-parent="#accordionSidenav">
+                                <nav className="sidenav-menu-nested nav">
+                                    <Link className={`nav-link  ${actived?.includes('dispute_management') ? 'active' : ''}`} to="dispute_management" onClick={() => { setActived('dispute_management'); setIsSidebar(true); }}>Dispute Management</Link>
 
-                                                <Link className={`nav-link  ${actived?.includes('orderHistory') ? 'active' : ''}`} to="orderHistory" onClick={() => { setActived('orderHistory'); setIsSidebar(true); }}>Order History</Link>
+                                    <Link className={`nav-link  ${actived?.includes('orderHistory') ? 'active' : ''}`} to="orderHistory" onClick={() => { setActived('orderHistory'); setIsSidebar(true); }}>Order History</Link>
 
-                                                <Link className={`nav-link  ${actived?.includes('openPositions') ? 'active' : ''}`} to="openPositions" onClick={() => { setActived('openPositions'); setIsSidebar(true); }}>Open Positions</Link>
-                                                <Link className={`nav-link  ${actived?.includes('closePositions') ? 'active' : ''}`} to="closePositions" onClick={() => { setActived('closePositions'); setIsSidebar(true); }}>Close Positions</Link>
-                                                <Link className={`nav-link  ${actived?.includes('futureTradeHistory') ? 'active' : ''}`} to="futureTradeHistory" onClick={() => { setActived('futureTradeHistory'); setIsSidebar(true); }}>Future Trade History</Link>
+                                    <Link className={`nav-link  ${actived?.includes('openPositions') ? 'active' : ''}`} to="openPositions" onClick={() => { setActived('openPositions'); setIsSidebar(true); }}>Open Positions</Link>
+                                    <Link className={`nav-link  ${actived?.includes('closePositions') ? 'active' : ''}`} to="closePositions" onClick={() => { setActived('closePositions'); setIsSidebar(true); }}>Close Positions</Link>
+                                    <Link className={`nav-link  ${actived?.includes('futureTradeHistory') ? 'active' : ''}`} to="futureTradeHistory" onClick={() => { setActived('futureTradeHistory'); setIsSidebar(true); }}>Future Trade History</Link>
 
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                }
-                                {permissions.includes(13) || userType === '1' ?
-                                    <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('TradingCommision') || actived?.includes('WithdrawalFees') || actived?.includes('CoinFee')) || actived?.includes('P2pCommission') || actived?.includes('TradingFee') ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseTradingCommision" aria-expanded="false" aria-controls="collapseTradingCommision">
-                                            <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
-                                            Exchange Profit
-                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
-                                        </div>
-                                        <div className="collapse" id="collapseTradingCommision" data-bs-parent="#accordionSidenav">
-                                            <nav className="sidenav-menu-nested nav">
+                                </nav>
+                            </div>
+                        </>
+                        : null
+                    }
+                    {permissions.includes(13) || userType === '1' ?
+                        <>
+                            <div className={`nav-link collapsed ${(actived?.includes('TradingCommision') || actived?.includes('WithdrawalFees') || actived?.includes('CoinFee')) || actived?.includes('P2pCommission') || actived?.includes('TradingFee') ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseTradingCommision" aria-expanded="false" aria-controls="collapseTradingCommision">
+                                <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
+                                Exchange Profit
+                                <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                            </div>
+                            <div className="collapse" id="collapseTradingCommision" data-bs-parent="#accordionSidenav">
+                                <nav className="sidenav-menu-nested nav">
 
-                                                <Link className={`nav-link  ${actived?.includes('TradingCommision') ? 'active' : ''}`} to="TradingCommision" onClick={() => { setActived('TradingCommision'); setIsSidebar(true); }}>   Trading Commission</Link>
+                                    <Link className={`nav-link  ${actived?.includes('TradingCommision') ? 'active' : ''}`} to="TradingCommision" onClick={() => { setActived('TradingCommision'); setIsSidebar(true); }}>   Trading Commission</Link>
 
-                                                <Link className={`nav-link  ${actived?.includes('WithdrawalFees') ? 'active' : ''}`} to="WithdrawalFees" onClick={() => setActived('WithdrawalFees')}> Withdrawal Fees</Link>
+                                    <Link className={`nav-link  ${actived?.includes('WithdrawalFees') ? 'active' : ''}`} to="WithdrawalFees" onClick={() => setActived('WithdrawalFees')}> Withdrawal Fees</Link>
 
-                                                {/* <Link className={`nav-link  ${actived?.includes('QuickBuySellCommission') ? 'active' : ''}`} to="QuickBuySellCommission" onClick={() => setActived('QuickBuySellCommission')}>Quick Buy Sell Commission</Link> */}
+                                    {/* <Link className={`nav-link  ${actived?.includes('QuickBuySellCommission') ? 'active' : ''}`} to="QuickBuySellCommission" onClick={() => setActived('QuickBuySellCommission')}>Quick Buy Sell Commission</Link> */}
 
 
-                                            </nav>
-                                        </div>
-                                    </>
-                                    : null
-                                }
-                                {permissions.includes(14) || userType === '1' ? (
-                                    <Link className={`nav-link collapsed ${actived?.includes('exchangeWalletManagement') ? 'active' : ''}`} to="exchangeWalletManagement" onClick={() => { setActived("exchangeWalletManagement"); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
-                                        Exchange Wallet Management
-                                    </Link>
-                                ) : null}
-                                {permissions.includes(14) || userType === '1' ? (
-                                    <Link className={`nav-link collapsed ${actived?.includes('AdminDebitCreditTrans') ? 'active' : ''}`} to="AdminDebitCreditTrans" onClick={() => { setActived("AdminDebitCreditTrans"); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
-                                        Admin Debit Credit Trans
-                                    </Link>
-                                ) : null}
-                                {permissions.includes(15) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('tradingfeereport') ? 'active' : ''}`} to="tradingfeereport" onClick={() => { setActived('tradingfeereport'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wave-square"></i></div>
-                                        Market Trades
-                                    </Link>
-                                    : null
-                                }
-                                {permissions.includes(16) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('OrderBook') ? 'active' : ''}`} to="OrderBook" onClick={() => { setActived('OrderBook'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-list"></i></div>
-                                        OrderBook
-                                    </Link>
-                                    : null
-                                }
+                                </nav>
+                            </div>
+                        </>
+                        : null
+                    }
+                    {permissions.includes(14) || userType === '1' ? (
+                        <Link className={`nav-link collapsed ${actived?.includes('exchangeWalletManagement') ? 'active' : ''}`} to="exchangeWalletManagement" onClick={() => { setActived("exchangeWalletManagement"); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
+                            Exchange Wallet Management
+                        </Link>
+                    ) : null}
+                    {permissions.includes(14) || userType === '1' ? (
+                        <Link className={`nav-link collapsed ${actived?.includes('AdminDebitCreditTrans') ? 'active' : ''}`} to="AdminDebitCreditTrans" onClick={() => { setActived("AdminDebitCreditTrans"); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
+                            Admin Debit Credit Trans
+                        </Link>
+                    ) : null}
+                    {permissions.includes(15) || userType === '1' ?
+                        <Link className={`nav-link collapsed ${actived?.includes('tradingfeereport') ? 'active' : ''}`} to="tradingfeereport" onClick={() => { setActived('tradingfeereport'); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-wave-square"></i></div>
+                            Market Trades
+                        </Link>
+                        : null
+                    }
+                    {permissions.includes(16) || userType === '1' ?
+                        <Link className={`nav-link collapsed ${actived?.includes('OrderBook') ? 'active' : ''}`} to="OrderBook" onClick={() => { setActived('OrderBook'); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-list"></i></div>
+                            OrderBook
+                        </Link>
+                        : null
+                    }
 
-                                {permissions.includes(17) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('allOpenOrders') ? 'active' : ''}`} to="allOpenOrders" onClick={() => { setActived('allOpenOrders'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wave-square"></i></div>
-                                        All Open Orders
-                                    </Link>
-                                    : null
-                                }
-                                {permissions.includes(14) || userType === '1' ? (
-                                    <Link className={`nav-link collapsed ${actived?.includes('AnnouncementDetails') ? 'active' : ''}`} to="AnnouncementDetails" onClick={() => { setActived("AnnouncementDetails"); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
-                                        Announcement Management
-                                    </Link>
-                                ) : null}
+                    {permissions.includes(17) || userType === '1' ?
+                        <Link className={`nav-link collapsed ${actived?.includes('allOpenOrders') ? 'active' : ''}`} to="allOpenOrders" onClick={() => { setActived('allOpenOrders'); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-wave-square"></i></div>
+                            All Open Orders
+                        </Link>
+                        : null
+                    }
 
-                                {permissions.includes(14) || userType === '1' ? (
-                                    <Link className={`nav-link collapsed ${actived?.includes('GiveawayManagement') ? 'active' : ''}`} to="GiveawayManagement" onClick={() => { setActived("GiveawayManagement"); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
-                                        Giveaway Management
-                                    </Link>
-                                ) : null}
 
-                                {permissions.includes(18) || userType === '1' ?
 
-                                    <Link className={`nav-link collapsed ${actived?.includes('notification') ? 'active' : ''}`} to="notification" onClick={() => { setActived('notification'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i className="fa fa-bell"></i></div>
-                                        Notifications Management
-                                    </Link>
-                                    : null
-                                }
-                                {/* {permissions.includes(19) || userType === '1' ?
+                    {permissions.includes(18) || userType === '1' ?
+
+                        <Link className={`nav-link collapsed ${actived?.includes('notification') ? 'active' : ''}`} to="notification" onClick={() => { setActived('notification'); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i className="fa fa-bell"></i></div>
+                            Notifications Management
+                        </Link>
+                        : null
+                    }
+                    {/* {permissions.includes(19) || userType === '1' ?
                                     <Link className={`nav-link collapsed ${actived?.includes('bannerManagement') ? 'active' : ''}`} to="bannerManagement" onClick={() => setActived('bannerManagement')}>
                                         <div className="nav-link-icon"><i className="fa fa-image"></i></div>
                                         Banner Management
                                     </Link>
                                     : null
                                 } */}
-                                {/* {permissions.includes(25) || userType === '1' ?
+                    {/* {permissions.includes(25) || userType === '1' ?
                                     <Link className={`nav-link collapsed ${actived?.includes('AnnouncementBanner') ? 'active' : ''}`} to="AnnouncementBanner" onClick={() => setActived('AnnouncementBanner')}>
                                         <div className="nav-link-icon"><i className="fa fa-image"></i></div>
                                         Announcement Banner Management
                                     </Link>
                                     : null
                                 } */}
-                                {/* {permissions.includes(19) || userType === '1' ?
+                    {/* {permissions.includes(19) || userType === '1' ?
                                     <Link className={`nav-link collapsed ${actived?.includes('Blog') ? 'active' : ''}`} to="Blog" onClick={() => setActived('Blog')}>
                                         <div className="nav-link-icon"><i className="fa fa-image"></i></div>
                                         Blog
@@ -416,14 +282,14 @@ const DashboardPage = () => {
                                     : null
                                 } */}
 
-                                {permissions.includes(20) || userType === '1' ?
-                                    <Link className={`nav-link collapsed ${actived?.includes('support') ? 'active' : ''}`} to="support" onClick={() => { setActived('support'); setIsSidebar(true); }}>
-                                        <div className="nav-link-icon"><i class="fa fa-user"></i></div>
-                                        Support
-                                    </Link>
-                                    : null
-                                }
-                                {/* {permissions.includes(20) || userType === '1' ?
+                    {permissions.includes(20) || userType === '1' ?
+                        <Link className={`nav-link collapsed ${actived?.includes('support') ? 'active' : ''}`} to="support" onClick={() => { setActived('support'); setIsSidebar(true); }}>
+                            <div className="nav-link-icon"><i class="fa fa-user"></i></div>
+                            Support
+                        </Link>
+                        : null
+                    }
+                    {/* {permissions.includes(20) || userType === '1' ?
                                     <Link className={`nav-link collapsed ${actived?.includes('inverstorUpdates') ? 'active' : ''}`} to="inverstorUpdates" onClick={() => { setActived('inverstorUpdates'); setIsSidebar(true); }}>
                                         <div className="nav-link-icon"><i className="fa-solid fa-bullhorn"></i></div>
                                         Announcement for Investors
@@ -433,11 +299,11 @@ const DashboardPage = () => {
  */}
 
 
-                            </div>
-                        </div>
-                    </nav >
+                </div>
+            </div>
+        </nav >
                 </div >
-                <Outlet />
+    <Outlet />
             </div >
         </>
     )
