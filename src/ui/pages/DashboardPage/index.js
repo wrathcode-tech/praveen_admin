@@ -173,20 +173,24 @@ const DashboardPage = () => {
                     }
                     {permissions.includes(12) || userType === '1' ?
                         <>
-                            <div className={`nav-link collapsed ${(actived?.includes('dispute_management') || actived?.includes('orderHistory') || actived?.includes('closePositions') || actived?.includes('futureTradeHistory') || actived?.includes('openPositions')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseP2PManagement" aria-expanded="false" aria-controls="collapseP2PManagement">
+                            <div className={`nav-link collapsed ${(actived?.includes('p2p-fiat-management') || actived?.includes('p2p-ads') || actived?.includes('p2p-orders') || actived?.includes('p2p-user-payment-methods') || actived?.includes('dispute_management') || actived?.includes('orderHistory') || actived?.includes('closePositions') || actived?.includes('futureTradeHistory') || actived?.includes('openPositions')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseP2PManagement" aria-expanded="false" aria-controls="collapseP2PManagement">
                                 <div className="nav-link-icon"><i className="fab fa-google-wallet"></i></div>
                                 P2P Management
                                 <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
                             </div>
                             <div className="collapse" id="collapseP2PManagement" data-bs-parent="#accordionSidenav">
                                 <nav className="sidenav-menu-nested nav">
+                                    <Link className={`nav-link  ${actived?.includes('p2p-fiat-management') ? 'active' : ''}`} to="p2p-fiat-management" onClick={() => { setActived('p2p-fiat-management'); setIsSidebar(true); }}>Fiat Currency Management</Link>
+                                    <Link className={`nav-link  ${actived?.includes('p2p-ads') ? 'active' : ''}`} to="p2p-ads" onClick={() => { setActived('p2p-ads'); setIsSidebar(true); }}>P2P Ads</Link>
+                                    <Link className={`nav-link  ${actived?.includes('p2p-orders') ? 'active' : ''}`} to="p2p-orders" onClick={() => { setActived('p2p-orders'); setIsSidebar(true); }}>P2P Orders</Link>
+                                    <Link className={`nav-link  ${actived?.includes('p2p-user-payment-methods') ? 'active' : ''}`} to="p2p-user-payment-methods" onClick={() => { setActived('p2p-user-payment-methods'); setIsSidebar(true); }}>User Payment Methods</Link>
                                     <Link className={`nav-link  ${actived?.includes('dispute_management') ? 'active' : ''}`} to="dispute_management" onClick={() => { setActived('dispute_management'); setIsSidebar(true); }}>Dispute Management</Link>
 
-                                    <Link className={`nav-link  ${actived?.includes('orderHistory') ? 'active' : ''}`} to="orderHistory" onClick={() => { setActived('orderHistory'); setIsSidebar(true); }}>Order History</Link>
+                                    {/* <Link className={`nav-link  ${actived?.includes('orderHistory') ? 'active' : ''}`} to="orderHistory" onClick={() => { setActived('orderHistory'); setIsSidebar(true); }}>Order History</Link>
 
                                     <Link className={`nav-link  ${actived?.includes('openPositions') ? 'active' : ''}`} to="openPositions" onClick={() => { setActived('openPositions'); setIsSidebar(true); }}>Open Positions</Link>
                                     <Link className={`nav-link  ${actived?.includes('closePositions') ? 'active' : ''}`} to="closePositions" onClick={() => { setActived('closePositions'); setIsSidebar(true); }}>Close Positions</Link>
-                                    <Link className={`nav-link  ${actived?.includes('futureTradeHistory') ? 'active' : ''}`} to="futureTradeHistory" onClick={() => { setActived('futureTradeHistory'); setIsSidebar(true); }}>Future Trade History</Link>
+                                    <Link className={`nav-link  ${actived?.includes('futureTradeHistory') ? 'active' : ''}`} to="futureTradeHistory" onClick={() => { setActived('futureTradeHistory'); setIsSidebar(true); }}>Future Trade History</Link> */}
 
                                 </nav>
                             </div>

@@ -72,6 +72,23 @@ export const ApiCallPut = async (url, parameters, headers) => {
   }
 };
 
+export const ApiCallPatch = async (url, parameters, headers) => {
+  try {
+    const response = await axios.patch(url, parameters, { headers: headers });
+    return response.data;
+  } catch (error) {
+    if (error.response.data.message === "Token is expired" || error.response.data.message === "Admin not found this email" || error.response.data.message === "Admin does not have access" || error.response.data.message === "Unauthorized Request!") {
+      tokenExpire(error.response.data.message)
+      return;
+    }
+    if (error.response.data.message === "IP not whitelisted for this signid") {
+      ipNotWhitelisted(error.response.data.message)
+      return;
+    }
+    return error.response.data;
+  }
+};
+
 
 const tokenExpire = (message) => {
   alertErrorMessage(message);

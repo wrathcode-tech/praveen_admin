@@ -1,6 +1,5 @@
 import { ApiConfig } from "../apiConfig/ApiConfig";
-import { ApiCallDelete, ApiCallPost, ApiCallPut } from "../apiConfig/ApiCall";
-import { ApiCallGet } from "../apiConfig/ApiCall";
+import { ApiCallDelete, ApiCallPost, ApiCallPut, ApiCallGet, ApiCallPatch } from "../apiConfig/ApiCall";
 import RejectedCoinList from "../../ui/pages/CoinPortalManagement/RejectedCoinList";
 const TAG = "AuthService";
 
@@ -3177,6 +3176,180 @@ const AuthService = {
       Authorization: token,
     };
     return ApiCallGet(url, headers);
+  },
+
+  // =====================================================================
+  // 💰 P2P FIAT CURRENCY MANAGEMENT APIs
+  // =====================================================================
+  p2pCreateFiat: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pCreateFiat } = ApiConfig;
+    const url = baseAdmin  + p2pCreateFiat;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  p2pUpdateFiat: async (fiatId, data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pUpdateFiat } = ApiConfig;
+    const url = baseAdmin + p2pUpdateFiat + `/${fiatId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPut(url, data, headers);
+  },
+
+  p2pUpdateFiatStatus: async (fiatId, status) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pUpdateFiatStatus } = ApiConfig;
+    const url = baseAdmin + p2pUpdateFiatStatus + `/${fiatId}/status`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPatch(url, { status }, headers);
+  },
+
+  p2pDeleteFiat: async (fiatId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pDeleteFiat } = ApiConfig;
+    const url = baseAdmin  + p2pDeleteFiat + `/${fiatId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallDelete(url, headers);
+  },
+
+  p2pGetFiatList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseP2P, p2pFiatList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseP2P + p2pFiatList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  // =====================================================================
+  // 📋 P2P ADS MANAGEMENT APIs
+  // =====================================================================
+  p2pGetAdsList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pAdsList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin  + p2pAdsList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  p2pGetAdDetails: async (adId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pAdDetails } = ApiConfig;
+    const url = baseAdmin  + p2pAdDetails + `/${adId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  // =====================================================================
+  // 📋 P2P ORDERS MANAGEMENT APIs
+  // =====================================================================
+  p2pGetOrdersList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pOrdersList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin  + p2pOrdersList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  p2pGetOrderDetails: async (orderId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pOrderDetails } = ApiConfig;
+    const url = baseAdmin  + p2pOrderDetails + `/${orderId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  // =====================================================================
+  // 📋 USER PAYMENT METHODS APIs
+  // =====================================================================
+  p2pGetUserPaymentMethods: async (userId, params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pUserPaymentMethods } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin  + p2pUserPaymentMethods + `/${userId}/payment-methods` + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  // =====================================================================
+  // ⚖️ DISPUTE MANAGEMENT APIs
+  // =====================================================================
+  p2pGetDisputesList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pDisputesList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin  + p2pDisputesList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  p2pGetDisputeDetails: async (orderId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pDisputeDetails } = ApiConfig;
+    const url = baseAdmin + p2pDisputeDetails + `/${orderId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  p2pResolveDispute: async (orderId, data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pResolveDispute } = ApiConfig;
+    const url = baseAdmin + p2pResolveDispute + `/${orderId}/resolve`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  p2pSendEmailToUser: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, p2pSendEmail } = ApiConfig;
+    const url = baseAdmin + p2pSendEmail;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
   },
 
 };

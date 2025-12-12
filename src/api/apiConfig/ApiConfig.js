@@ -1,6 +1,6 @@
 
 const appUrl = "http://3.13.64.97:4001";
-// const appUrl = "http://192.168.1.18:3001";
+// const appUrl = "http://localhost:4001";
 
 export const ApiConfig = {
   // =========EndPoints==========
@@ -262,6 +262,22 @@ export const ApiConfig = {
   // Giveaway Management
   getGiveawayList: "getGiveawayList",
   updateGiveawayStatus: "updateGiveawayStatus",
+
+  // P2P Management APIs
+  p2pCreateFiat: "p2p/fiat-currencies",
+  p2pUpdateFiat: "p2p/fiat-currencies",
+  p2pUpdateFiatStatus: "p2p/fiat-currencies",
+  p2pDeleteFiat: "p2p/fiat-currencies",
+  p2pFiatList: "fiat_currency_list",
+  p2pAdsList: "p2p/ads",
+  p2pAdDetails: "p2p/ads",
+  p2pOrdersList: "p2p/orders",
+  p2pOrderDetails: "p2p/orders",
+  p2pUserPaymentMethods: "p2p/users",
+  p2pDisputesList: "p2p/disputes",
+  p2pDisputeDetails: "p2p/disputes",
+  p2pResolveDispute: "p2p/disputes",
+  p2pSendEmail: "p2p/send-email",
 
 
   // ============URLs================

@@ -373,8 +373,6 @@ const CurrencypairManagement = () => {
     { value: 'TRC20', label: 'TRC20' },
     { value: 'ERC20', label: 'ERC20' },
     { value: 'BEP20', label: 'BEP20' },
-    { value: 'SOLANA', label: 'SOLANA' },
-    { value: 'POLYGON', label: 'POLYGON' },
   ];
 
   const handleChainChange = (selectedOptions) => {
@@ -444,7 +442,17 @@ const CurrencypairManagement = () => {
                         onChange={handleChainChange}
                         options={chainOptions}
                         isMulti
+                        styles={{
+
+
+                          option: (base, state) => ({
+                            ...base,
+                            backgroundColor: state.isFocused ? "#eee" : "#fff",
+                            color: "#000",
+                          }),
+                        }}
                       />
+
                     </div>
                     <div className="form-group mb-3">
                       {chain && chain?.map((item, index) => {

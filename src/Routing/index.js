@@ -52,6 +52,12 @@ import InverstorUpdates from "../ui/pages/InvestorUpdate";
 import AddTraders from "../ui/pages/TradeList/AddTraders";
 import DisputeManagement from "../ui/pages/P2PManagement/DisputeManagement";
 import DisputeDetails from "../ui/pages/P2PManagement/DisputeDetails";
+import FiatCurrencyManagement from "../ui/pages/P2PManagement/FiatCurrencyManagement";
+import P2PAdsManagement from "../ui/pages/P2PManagement/P2PAdsManagement";
+import P2PAdDetails from "../ui/pages/P2PManagement/P2PAdDetails";
+import P2POrdersManagement from "../ui/pages/P2PManagement/P2POrdersManagement";
+import P2POrderDetails from "../ui/pages/P2PManagement/P2POrderDetails";
+import UserPaymentMethods from "../ui/pages/P2PManagement/UserPaymentMethods";
 
 const Routing = () => {
     const [actived, setActived] = useState('')
@@ -113,6 +119,12 @@ const Routing = () => {
                             <Route path="user-details/:userId" element={<UserDetailsPage />} />
                             <Route path="dispute_management" element={<DisputeManagement />} ></Route>
                             <Route path="dispute_Details" element={<DisputeDetails />} ></Route>
+                            <Route path="p2p-fiat-management" element={<FiatCurrencyManagement />} ></Route>
+                            <Route path="p2p-ads" element={<P2PAdsManagement />} ></Route>
+                            <Route path="p2p-ad-details" element={<P2PAdDetails />} ></Route>
+                            <Route path="p2p-orders" element={<P2POrdersManagement />} ></Route>
+                            <Route path="p2p-order-details" element={<P2POrderDetails />} ></Route>
+                            <Route path="p2p-user-payment-methods" element={<UserPaymentMethods />} ></Route>
                         </Route>
 
                     </> :
