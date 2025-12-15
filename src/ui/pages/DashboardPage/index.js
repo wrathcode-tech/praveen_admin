@@ -26,7 +26,7 @@ const DashboardPage = () => {
                         <div className="sidenav-menu">
                             <div className="nav accordion" id="accordionSidenav">
                                 <div className="sidenav-menu-heading">
-                                    <h1 style={{ color: '#f1c40f' }}>Praveen Admin</h1>
+                                    <h1 style={{ color: '#f1c40f' }}>Orionvirex Admin</h1>
                                 </div>
                                 <Link to="/dashboard/homepage" className={`nav-link collapsed ${actived?.includes('homepage') ? 'active' : ''}`} onClick={() => { setActived('homepage'); setIsSidebar(true) }}>
                                     <div className="nav-link-icon"><i className="fa fa-th"></i></div>
