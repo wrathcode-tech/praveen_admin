@@ -1,7 +1,7 @@
 // ========================= FULL FILE STARTS HERE ===============================
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { alertErrorMessage, alertSuccessMessage } from "../../../customComponent/CustomAlertMessage";
 import AuthService from "../../../api/services/AuthService";
 import moment from "moment";
@@ -10,7 +10,6 @@ import Swal from "sweetalert2";
 import { ApiConfig } from "../../../api/apiConfig/ApiConfig";
 const DisputeDetails = () => {
     const location = useLocation();
-    const navigate = useNavigate();
     const { disputeData } = location.state || {};
     console.log(disputeData,"disputeData");
     
@@ -149,17 +148,20 @@ Support Team`
             });
 
             if (result?.success) {
+                LoaderHelper.loaderStatus(false);
                 alertSuccessMessage(result?.message || "Dispute cancelled successfully");
                 setShowCancelModal(false);
                 setCancelReason('');
-                navigate("/dashboard/dispute_management");
+                // Refresh order details instead of navigating away
+                getOrderDetails(orderId);
             } else {
+                LoaderHelper.loaderStatus(false);
                 alertErrorMessage(result?.message || "Failed to cancel dispute");
             }
         } catch (error) {
+            LoaderHelper.loaderStatus(false);
             alertErrorMessage("Error cancelling dispute");
         }
-        LoaderHelper.loaderStatus(false);
     };
 
     const handleFavorBuyer = async () => {
@@ -202,22 +204,29 @@ Support Team`
                 action: "RELEASE_TO_BUYER",
                 adminNote: "Dispute resolved in favor of buyer"
             });
-
+            console.log(apiResult, "apiResult");
+            
             if (apiResult?.success) {
+                LoaderHelper.loaderStatus(false);
                 await Swal.fire({
                     title: "Success!",
                     text: apiResult?.message || "Dispute resolved in favor of buyer",
                     icon: "success",
                 });
 
-                navigate("/dashboard/dispute_management");
+                // Refresh order details instead of navigating away
+                const orderId = location.state?.orderId || disputeData?.orderId || disputeData?._id;
+                if (orderId) {
+                    getOrderDetails(orderId);
+                }
             } else {
+                LoaderHelper.loaderStatus(false);
                 alertErrorMessage(apiResult?.message || "Failed to resolve dispute");
             }
         } catch (error) {
+            LoaderHelper.loaderStatus(false);
             alertErrorMessage("Error resolving dispute");
         }
-        LoaderHelper.loaderStatus(false);
     };
 
     const handleOpenEmailModal = (templateType = null) => {
@@ -513,7 +522,7 @@ Support Team`
                                                             <div
                                                                 key={messageKey}
                                                                 className={`mb-3 p-3 rounded ${
-                                                                    isSystem ? "bg-secondary text-white" : ""
+                                                                    isSystem ? "bg-dark text-white" : ""
                                                                 }`}
                                                                 style={{
                                                                     marginLeft:
@@ -522,7 +531,7 @@ Support Team`
                                                                         isBuyer && !isSystem ? "20%" : "0",
                                                                     backgroundColor: isSystem
                                                                         ? ""
-                                                                        : "#f8f9fa",
+                                                                        : "rgb(124 124 124)",
                                                                 }}
                                                             >
                                                                 <div className="d-flex justify-content-between align-items-center mb-2">

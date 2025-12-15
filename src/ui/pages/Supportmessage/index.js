@@ -233,7 +233,7 @@ const Supportmessage = (props) => {
                                               <div
                                                 className="text text-end px-3 self_message"
                                                 dangerouslySetInnerHTML={{
-                                                  __html: `<strong>You:</strong> ${item?.query.replace(
+                                                  __html: `<strong>User:</strong> ${item?.query.replace(
                                                     /\n/g,
                                                     "<br>"
                                                   )}`,

@@ -15,7 +15,7 @@ const DisputeManagement = () => {
     const [totalData, setTotalData] = useState(0);
     const [filters, setFilters] = useState({
         disputeBy: "",
-        adminStatus: "",
+        adminStatus: "PENDING",
         dateFrom: "",
         dateTo: ""
     });

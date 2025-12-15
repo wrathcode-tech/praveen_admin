@@ -24532,11 +24532,20 @@ input#search-bar-0 {
   color: white;
 }
 
+.received>.text {
+  background-color: #5d5d5d;
+  color: white;
+}
+
 .ql-editor.ql-blank::before {
   color: rgb(161 161 161 / 60%) !important;
 }
 
 .sent {
+  flex-direction: row-reverse;
+}
+
+.received {
   flex-direction: row-reverse;
 }
 
