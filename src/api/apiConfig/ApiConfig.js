@@ -1,5 +1,6 @@
 
-const appUrl = "http://3.13.64.97:4001";
+const appUrl = "https://backend.orionvrex.com";
+// const appUrl = "http://3.13.64.97:4001";
 // const appUrl = "http://localhost:4001";
 
 export const ApiConfig = {
