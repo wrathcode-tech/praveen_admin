@@ -19,7 +19,7 @@ class Loading extends React.Component {
     return (
       loaderState &&
       <div className="centerbox">
-        <img src="/assets/img/favicon_light.svg" alt="" style={{ width: '100px', height: '75px' }} />
+        <img src="/assets/img/favicon_white.svg" alt="" style={{ width: '100px', height: '75px' }} />
       </div>
     )
   }

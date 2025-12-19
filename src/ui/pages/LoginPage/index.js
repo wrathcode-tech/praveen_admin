@@ -106,12 +106,12 @@ const LoginPage = () => {
             <div id="layoutAuthentication_content">
                 <div className="login_section">
                     <main className="login-card">
-                     
+
 
                         <div className="px-4 login_right_s">
 
                             <div className="logo_cntr">
-                                <img src="/assets/img/logo_light.svg" className="img-fluid" alt="" width='300' />
+                                <img src="/assets/img/Orionvrex_white.svg" className="img-fluid" alt="" width='300' />
                             </div>
 
                             <div className="row justify-content-center">
@@ -130,23 +130,23 @@ const LoginPage = () => {
                                                 <div className="mb-3">
                                                     <label className="text-gray-600 small" htmlFor="emailExample">Email Address</label>
                                                     <div className="input-group">
-                                                        <input 
+                                                        <input
                                                             className={`form-control form-control-solid ${errors.email ? 'is-invalid' : ''}`}
-                                                            type="email" 
-                                                            name="email" 
-                                                            placeholder="Enter your email" 
-                                                            aria-label="Email Address" 
-                                                            aria-describedby="emailExample" 
-                                                            value={email} 
+                                                            type="email"
+                                                            name="email"
+                                                            placeholder="Enter your email"
+                                                            aria-label="Email Address"
+                                                            aria-describedby="emailExample"
+                                                            value={email}
                                                             onChange={(e) => {
                                                                 setEmail(e.target.value);
                                                                 if (errors.email) setErrors({ ...errors, email: '' });
-                                                            }} 
+                                                            }}
                                                         />
-                                                        <button 
+                                                        <button
                                                             type="button"
                                                             onClick={handleGetOtp}
-                                                            className="btn btn-block btn-l btn_admin" 
+                                                            className="btn btn-block btn-l btn_admin"
                                                             style={{ backgroundColor: "rgb(52 51 50)", color: "white" }}>
                                                             <span>GET OTP</span>
                                                         </button>
@@ -167,16 +167,16 @@ const LoginPage = () => {
                                                                 setPassword(e.target.value);
                                                                 if (errors.password) setErrors({ ...errors, password: '' });
                                                             }}
-                                                            required 
+                                                            required
                                                         />
-                                                        <div 
+                                                        <div
                                                             className="absolute top-1/2 right-3 transform -translate-y-1/2"
                                                             onClick={() => setShowPassword(!showPassword)}
                                                             style={{ cursor: 'pointer' }}>
-                                                            <img 
+                                                            <img
                                                                 src={showPassword ? "/assets/img/view_close.svg" : "/assets/img/view_icon.svg"}
-                                                                alt="Toggle Password" 
-                                                                className="w-5 h-5" 
+                                                                alt="Toggle Password"
+                                                                className="w-5 h-5"
                                                             />
                                                         </div>
                                                     </div>
@@ -187,12 +187,12 @@ const LoginPage = () => {
                                                 {/* OTP Verification Code Field */}
                                                 <div className="mb-3">
                                                     <label className="text-gray-600 small" htmlFor="verificationCode">OTP Verification Code</label>
-                                                    <input 
+                                                    <input
                                                         className={`form-control form-control-solid ${errors.verificationCode ? 'is-invalid' : ''}`}
-                                                        type="text" 
-                                                        name="verificationCode" 
-                                                        placeholder="Enter 6-digit OTP" 
-                                                        aria-label="verificationCode" 
+                                                        type="text"
+                                                        name="verificationCode"
+                                                        placeholder="Enter 6-digit OTP"
+                                                        aria-label="verificationCode"
                                                         maxLength={6}
                                                         value={verificationCode}
                                                         onChange={(e) => {
@@ -205,9 +205,9 @@ const LoginPage = () => {
                                                 </div>
 
                                                 <div className="text-center py-3 mt-2">
-                                                    <button 
-                                                        type="button" 
-                                                        className="btn btn-block w-100 btn-xl btn_admin mt-2 px-5" 
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-block w-100 btn-xl btn_admin mt-2 px-5"
                                                         style={{ backgroundColor: "rgb(52 51 50)", fontSize: "20px", color: "white" }}
                                                         onClick={handleLogin}>
                                                         Login
