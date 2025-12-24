@@ -3184,7 +3184,7 @@ const AuthService = {
   p2pCreateFiat: async (data) => {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pCreateFiat } = ApiConfig;
-    const url = baseAdmin  + p2pCreateFiat;
+    const url = baseAdmin + p2pCreateFiat;
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3217,7 +3217,7 @@ const AuthService = {
   p2pDeleteFiat: async (fiatId) => {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pDeleteFiat } = ApiConfig;
-    const url = baseAdmin  + p2pDeleteFiat + `/${fiatId}`;
+    const url = baseAdmin + p2pDeleteFiat + `/${fiatId}`;
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3244,7 +3244,7 @@ const AuthService = {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pAdsList } = ApiConfig;
     const queryString = new URLSearchParams(params).toString();
-    const url = baseAdmin  + p2pAdsList + (queryString ? `?${queryString}` : "");
+    const url = baseAdmin + p2pAdsList + (queryString ? `?${queryString}` : "");
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3255,7 +3255,7 @@ const AuthService = {
   p2pGetAdDetails: async (adId) => {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pAdDetails } = ApiConfig;
-    const url = baseAdmin  + p2pAdDetails + `/${adId}`;
+    const url = baseAdmin + p2pAdDetails + `/${adId}`;
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3270,7 +3270,7 @@ const AuthService = {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pOrdersList } = ApiConfig;
     const queryString = new URLSearchParams(params).toString();
-    const url = baseAdmin  + p2pOrdersList + (queryString ? `?${queryString}` : "");
+    const url = baseAdmin + p2pOrdersList + (queryString ? `?${queryString}` : "");
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3281,7 +3281,7 @@ const AuthService = {
   p2pGetOrderDetails: async (orderId) => {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pOrderDetails } = ApiConfig;
-    const url = baseAdmin  + p2pOrderDetails + `/${orderId}`;
+    const url = baseAdmin + p2pOrderDetails + `/${orderId}`;
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3296,7 +3296,7 @@ const AuthService = {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pUserPaymentMethods } = ApiConfig;
     const queryString = new URLSearchParams(params).toString();
-    const url = baseAdmin  + p2pUserPaymentMethods + `/${userId}/payment-methods` + (queryString ? `?${queryString}` : "");
+    const url = baseAdmin + p2pUserPaymentMethods + `/${userId}/payment-methods` + (queryString ? `?${queryString}` : "");
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3311,7 +3311,7 @@ const AuthService = {
     const token = sessionStorage.getItem("token");
     const { baseAdmin, p2pDisputesList } = ApiConfig;
     const queryString = new URLSearchParams(params).toString();
-    const url = baseAdmin  + p2pDisputesList + (queryString ? `?${queryString}` : "");
+    const url = baseAdmin + p2pDisputesList + (queryString ? `?${queryString}` : "");
     const headers = {
       "Content-Type": "application/json",
       Authorization: token,
@@ -3350,6 +3350,81 @@ const AuthService = {
       Authorization: token,
     };
     return ApiCallPost(url, data, headers);
+  },
+
+  debitCreditForUsers: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const adminId = sessionStorage.getItem("userId"); // userId contains admin ID after login
+    const { baseAdmin, debitCreditForUsers } = ApiConfig;
+    const url = baseAdmin + debitCreditForUsers;
+    const params = {
+      ...data,
+      adminId: adminId
+    };
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, params, headers);
+  },
+
+  getAvailableWalletTypes: async () => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, availableWalletTypes } = ApiConfig;
+    const url = baseAdmin + availableWalletTypes;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  uploadApk: async (formData) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, uploadApk } = ApiConfig;
+    const url = baseAdmin + uploadApk;
+    const headers = {
+      "Content-Type": "multipart/form-data",
+      Authorization: token,
+    };
+    return ApiCallPost(url, formData, headers);
+  },
+
+  getApkList: async () => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, getApkList } = ApiConfig;
+    const url = baseAdmin + getApkList;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  updateApkStatus: async (apkId, status) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, updateApkStatus } = ApiConfig;
+    const url = baseAdmin + updateApkStatus;
+    const params = {
+      apkId: apkId,
+      status: status
+    };
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, params, headers);
+  },
+
+  deleteApk: async (apkId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, deleteApk } = ApiConfig;
+    const url = baseAdmin + deleteApk + `/${apkId}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallDelete(url, headers);
   },
 
 };

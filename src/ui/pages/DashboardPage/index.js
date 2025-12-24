@@ -26,7 +26,8 @@ const DashboardPage = () => {
                         <div className="sidenav-menu">
                             <div className="nav accordion" id="accordionSidenav">
                                 <div className="sidenav-menu-heading">
-                                    <h1 style={{ color: '#f1c40f' }}>Orionvrex Admin</h1>
+                                    {/* <h1 style={{ color: '#f1c40f' }}>Vorienx Admin</h1> */}
+                                    <img src="/assets/img/Vorienx_white.svg" alt="" />
                                 </div>
                                 <Link to="/dashboard/homepage" className={`nav-link collapsed ${actived?.includes('homepage') ? 'active' : ''}`} onClick={() => { setActived('homepage'); setIsSidebar(true) }}>
                                     <div className="nav-link-icon"><i className="fa fa-th"></i></div>
@@ -290,6 +291,13 @@ const DashboardPage = () => {
                                     <Link className={`nav-link collapsed ${actived?.includes('support') ? 'active' : ''}`} to="support" onClick={() => { setActived('support'); setIsSidebar(true); }}>
                                         <div className="nav-link-icon"><i class="fa fa-user"></i></div>
                                         Support
+                                    </Link>
+                                    : null
+                                }
+                                {permissions.includes(21) || userType === '1' ?
+                                    <Link className={`nav-link collapsed ${actived?.includes('UpdateApk') ? 'active' : ''}`} to="UpdateApk" onClick={() => { setActived('UpdateApk'); setIsSidebar(true); }}>
+                                        <div className="nav-link-icon"><i class="fa fa-user"></i></div>
+                                        Update APK
                                     </Link>
                                     : null
                                 }

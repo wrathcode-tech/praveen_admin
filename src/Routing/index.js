@@ -58,6 +58,7 @@ import P2PAdDetails from "../ui/pages/P2PManagement/P2PAdDetails";
 import P2POrdersManagement from "../ui/pages/P2PManagement/P2POrdersManagement";
 import P2POrderDetails from "../ui/pages/P2PManagement/P2POrderDetails";
 import UserPaymentMethods from "../ui/pages/P2PManagement/UserPaymentMethods";
+import UpdateApk from "../ui/pages/UpdateApk";
 
 const Routing = () => {
     const [actived, setActived] = useState('')
@@ -91,6 +92,7 @@ const Routing = () => {
                             <Route exect path="MiscellaneousPage" element={<MiscellaneousPage />}></Route>
                             <Route exect path="notification" element={<Notification />}></Route>
                             <Route exect path="bannerManagement" element={<BannerManagement />}></Route>
+                            <Route exect path="updateApk" element={<UpdateApk />}></Route>
                             <Route exect path="RejectedKyc" element={<RejectedKyc />}></Route>
                             <Route exect path="TradingCommision" element={<TradingCommision />}></Route>
                             <Route exect path="OrderBook" element={<OrderBook />}></Route>
@@ -103,7 +105,7 @@ const Routing = () => {
                             <Route exect path="myLogs" element={<MyActivityLogs />}></Route>
                             <Route exect path="allOpenOrders" element={<AllOpenOrders />}></Route>
                             <Route exect path="CoinFee" element={<CoinlistFee />}></Route>
-              
+
                             <Route exect path="QuickBuySellCommission" element={<QuickBuySellCommission />}></Route>
                             <Route exect path="user_wallet_balance" element={<UserWalletBal />}></Route>
                             <Route exect path="PartnerStakePayout" element={<PartnerStakePayout />}></Route>
@@ -125,6 +127,7 @@ const Routing = () => {
                             <Route path="p2p-orders" element={<P2POrdersManagement />} ></Route>
                             <Route path="p2p-order-details" element={<P2POrderDetails />} ></Route>
                             <Route path="p2p-user-payment-methods" element={<UserPaymentMethods />} ></Route>
+                            <Route path="UpdateApk" element={<UpdateApk />} ></Route>
                         </Route>
 
                     </> :

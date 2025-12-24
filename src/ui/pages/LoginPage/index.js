@@ -111,7 +111,7 @@ const LoginPage = () => {
                         <div className="px-4 login_right_s">
 
                             <div className="logo_cntr">
-                                <img src="/assets/img/Orionvrex_white.svg" className="img-fluid" alt="" width='300' />
+                                <img src="/assets/img/Vorienx_white.svg" className="img-fluid" alt="" width='300' />
                             </div>
 
                             <div className="row justify-content-center">

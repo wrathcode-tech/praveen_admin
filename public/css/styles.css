@@ -13848,6 +13848,7 @@ select:focus {
   .gap-sm-5 {
     gap: 2.5rem !important;
   }
+
   .custom-file-input {
     color: #939393 !important;
     /* background-color: #fff; */
@@ -13857,8 +13858,8 @@ select:focus {
     cursor: pointer;
     width: 100%;
     font-size: 14px;
-}
-  
+  }
+
   .gap-sm-10 {
     gap: 6rem !important;
   }
@@ -20752,6 +20753,18 @@ header.page-header .mt-4 {
   height: 3rem;
 }
 
+.tradelistpop .modal-content {
+  padding: 24px;
+}
+
+
+.uploadApkModal .modal-content{  padding: 24px; }
+
+.uploadApkModal .modal-dialog {
+  max-width: 600px;
+}
+
+
 .avatar-xxl {
   height: 3.75rem;
   width: 3.75rem;
@@ -23024,6 +23037,7 @@ header.page-header .mt-4 {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  width: 80%;
 }
 
 .sidenav .sidenav-menu .nav .nav-link {

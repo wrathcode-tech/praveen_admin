@@ -1,6 +1,6 @@
 
-const appUrl = "https://backend.orionvrex.com";
-// const appUrl = "http://3.13.64.97:4001";
+const appUrl = "https://backend.vorienx.com";
+// const appUrl = "http://192.168.1.14:4001";
 // const appUrl = "http://localhost:4001";
 
 export const ApiConfig = {
@@ -279,6 +279,12 @@ export const ApiConfig = {
   p2pDisputeDetails: "p2p/disputes",
   p2pResolveDispute: "p2p/disputes",
   p2pSendEmail: "p2p/send-email",
+  debitCreditForUsers: "debit_credit_for_users",
+  availableWalletTypes: "available-wallet-types",
+  uploadApk: "updateApk",
+  getApkList: "getApk",
+  // updateApkStatus: "update-apk-status",
+  // deleteApk: "delete-apk",
 
 
   // ============URLs================
