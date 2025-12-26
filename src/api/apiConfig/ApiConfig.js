@@ -281,7 +281,7 @@ export const ApiConfig = {
   p2pSendEmail: "p2p/send-email",
   debitCreditForUsers: "debit_credit_for_users",
   availableWalletTypes: "available-wallet-types",
-  uploadApk: "updateApk",
+  updateApk: "updateApk",
   getApkList: "getApk",
   // updateApkStatus: "update-apk-status",
   // deleteApk: "delete-apk",

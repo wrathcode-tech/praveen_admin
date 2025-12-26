@@ -57,7 +57,7 @@ const RejectedKyc = () => {
     const navigate = useNavigate();
 
     const navigateToKyc = (row) => {
-        navigate(`/dashboard/VerifyKyc/${row.uuid}`)
+        navigate(`/dashboard/VerifyKyc/${row?.uuid}`)
     }
     const columns = [
         { name: "Sr no.", wrap: true, selector: row => allData?.indexOf(row) + 1 },

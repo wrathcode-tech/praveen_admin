@@ -1,202 +1,183 @@
-import React, { useState, useEffect } from "react";
-import AuthService from "../../../api/services/AuthService";
-import { alertSuccessMessage, alertErrorMessage } from "../../../customComponent/CustomAlertMessage";
-import LoaderHelper from "../../../customComponent/Loading/LoaderHelper";
-import DataTableBase from "../../../customComponent/DataTable";
-import { ApiConfig } from "../../../api/apiConfig/ApiConfig";
-import moment from "moment";
+import React, { useState, useEffect } from 'react';
+import { alertErrorMessage, alertSuccessMessage } from '../../../customComponent/CustomAlertMessage';
+import LoaderHelper from '../../../customComponent/Loading/LoaderHelper';
+import AuthService from '../../../api/services/AuthService';
 
-const UpdateApk = () => {
-    const [apkList, setApkList] = useState([]);
+function UpdateApk() {
+    const [version, setVersion] = useState("");
     const [apkFile, setApkFile] = useState(null);
-    const [versionName, setVersionName] = useState("");
-    const [showUploadModal, setShowUploadModal] = useState(false);
-
-    const userType = sessionStorage.getItem("userType");
+    const [fileName, setFileName] = useState("");
+    const [fileSize, setFileSize] = useState("");
+    const [currentApk, setCurrentApk] = useState(null);
 
     useEffect(() => {
-        handleApkList();
+        fetchCurrentApk();
     }, []);
 
-    const handleApkList = async () => {
-        LoaderHelper.loaderStatus(true);
-        await AuthService.getApkList().then(async (result) => {
-            LoaderHelper.loaderStatus(false);
-            if (result?.success) {
-                try {
-                    // Handle different response structures
-                    let apkData = [];
-                    if (Array.isArray(result?.data)) {
-                        apkData = result.data;
-                    } else if (result?.data && typeof result.data === 'object') {
-                        // If data is a single object, convert to array
-                        if (result.data.apk || result.data.version) {
-                            apkData = [result.data];
-                        } else {
-                            // If data contains an array property
-                            apkData = result.data.data || result.data.list || [];
-                        }
-                    }
-                    setApkList(apkData);
-                } catch (error) {
-                    console.error('Error processing APK list:', error);
-                    alertErrorMessage(error);
-                }
-            } else {
-                alertErrorMessage(result?.message || "Failed to fetch APK list");
+    const fetchCurrentApk = async () => {
+        try {
+            LoaderHelper.loaderStatus(true);
+            const res = await AuthService.getApkList();
+            if (res?.success) {
+                setCurrentApk(res?.data);
             }
-        }).catch((error) => {
+        } catch (e) {
+            console.error("Error fetching APK:", e);
+        } finally {
             LoaderHelper.loaderStatus(false);
-            alertErrorMessage("Error fetching APK list");
-        });
+        }
     };
 
-    const handleFileChange = (event) => {
-        const file = event.target.files[0];
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
         if (file) {
+            // Check if file is APK
             if (file.type === "application/vnd.android.package-archive" || file.name.endsWith('.apk')) {
-                if (file.size <= 100 * 1024 * 1024) { // 100MB limit
-                    setApkFile(file);
-                } else {
-                    alertErrorMessage("APK file size should be less than 100MB");
-                    event.target.value = "";
-                }
+                setApkFile(file);
+                setFileName(file.name);
+                // Display file size in MB
+                const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                setFileSize(sizeInMB);
             } else {
                 alertErrorMessage("Please select a valid APK file");
-                event.target.value = "";
+                e.target.value = "";
             }
         }
     };
 
-    const resetForm = () => {
-        setApkFile(null);
-        setVersionName("");
-        if (document.getElementById("apkFile")) {
-            document.getElementById("apkFile").value = "";
-        }
-    };
-
-    const handleUploadApk = async () => {
-        if (!apkFile) {
-            alertErrorMessage("Please select an APK file");
-            return;
-        }
-        if (!versionName) {
-            alertErrorMessage("Please enter version name");
+    const handleUpdateApk = async () => {
+        if (!version || !apkFile) {
+            alertErrorMessage("Please enter version and select APK file");
             return;
         }
 
-        const formData = new FormData();
-        formData.append("apk", apkFile);
-        formData.append("version", versionName);
+        try {
+            LoaderHelper.loaderStatus(true);
+            const formData = new FormData();
+            formData.append('version', version);
+            formData.append('apk', apkFile);
 
-        LoaderHelper.loaderStatus(true);
-        await AuthService.uploadApk(formData).then(async (result) => {
-            LoaderHelper.loaderStatus(false);
+            const result = await AuthService.updateApk(formData);
             if (result?.success) {
-                alertSuccessMessage(result?.message || "APK uploaded successfully");
-                setShowUploadModal(false);
-                resetForm();
-                handleApkList();
+                alertSuccessMessage("APK updated successfully");
+                setVersion("");
+                setApkFile(null);
+                setFileName("");
+                // Reset file input
+                const fileInput = document.getElementById('apkFileInput');
+                if (fileInput) fileInput.value = "";
+                // Refresh current APK data
+                fetchCurrentApk();
             } else {
-                alertErrorMessage(result?.message || "Failed to upload APK");
+                alertErrorMessage(result?.message || "Failed to update APK");
             }
-        }).catch((error) => {
+        } catch (error) {
+            alertErrorMessage(error?.message || "An error occurred while updating APK");
+        } finally {
             LoaderHelper.loaderStatus(false);
-            alertErrorMessage("Error uploading APK");
-        });
-    };
-
-
-
-
-
-
-    const downloadApk = (apkPath) => {
-        if (apkPath) {
-            window.open(ApiConfig.appUrl + apkPath, "_blank");
         }
     };
-
-    const columns = [
-        { name: "Sr No.", selector: (row, index) => index + 1, width: "80px" },
-        {
-            name: "APK File",
-            selector: (row) => (
-                <button
-                    className="btn btn-link btn-sm p-0"
-                    onClick={() => downloadApk(row?.apk)}
-                >
-                    Download APK
-                </button>
-            ),
-            width: "150px"
-        },
-        { name: "Version", selector: (row) => row?.version || "-----", width: "150px" },
-    ];
 
     return (
         <div id="layoutSidenav_content">
-            <div className="container-xl px-4">
-                <div className="d-flex justify-content-between align-items-center mt-4 mb-3">
-                    <h1>APK Management</h1>
-                    <button
-                        className="btn btn-primary"
-                        onClick={() => setShowUploadModal(true)}
-                    >
-                        <i className="fa fa-upload me-2"></i>Upload New APK
-                    </button>
-                </div>
-
-                <DataTableBase columns={columns} data={apkList} pagination={false} />
-            </div>
-
-            {/* Upload APK Modal */}
-            {showUploadModal && (
-                <div className="modal uploadApkModal show d-block" id="uploadApkModal" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                    <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">Upload New APK</h5>
-                                <button type="button" className="btn-close" onClick={() => { setShowUploadModal(false); resetForm(); }} aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                <form>
-                                    <div className="mb-3">
-                                        <label className="form-label">APK File <span className="text-danger">*</span></label>
-                                        <input type="file" id="apkFile" className="form-control"
-                                            accept=".apk" onChange={handleFileChange} required />
-                                        <small className="form-text text-muted">Maximum file size: 100MB</small>
-                                    </div>
-                                    <div className="mb-3">
-                                        <label className="form-label">Version Name <span className="text-danger">*</span></label>
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            value={versionName}
-                                            onChange={(e) => setVersionName(e.target.value)}
-                                            placeholder="e.g., 1.0.0"
-                                            required
-                                        />
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" onClick={() => { setShowUploadModal(false); resetForm(); }}>
-                                    Cancel
-                                </button>
-                                <button type="button" className="btn btn-primary" onClick={handleUploadApk}>
-                                    Upload APK
-                                </button>
+            <main>
+                <header className="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+                    <div className="container-xl px-4">
+                        <div className="page-header-content pt-4">
+                            <div className="row align-items-center justify-content-between">
+                                <div className="col-auto mt-4">
+                                    <h1 className="page-header-title">
+                                        <div className="page-header-icon"><i className="fa fa-mobile-alt"></i></div>
+                                        Version Update
+                                    </h1>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </header>
+                <div className="container-xl px-4 mt-n10">
+                    <div className="card mb-4">
+                        <div className="card-header">Update APK Version</div>
+                        <div className="card-body">
+                            <form>
+                                <div className="row gx-3 mb-3">
+                                    <div className="col-md-6">
+                                        <div className="d-flex justify-content-between align-items-center mb-2">
+                                            <label className="small mb-1" htmlFor="inputVersion">
+                                                Version <em>*</em>
+                                            </label>
+                                            {currentApk && (
+                                                <span style={{ fontSize: "12px", color: "#2563eb", fontWeight: "600" }}>
+                                                    Current: {currentApk.version || "N/A"}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="form-control form-control-solid"
+                                            id="inputVersion"
+                                            placeholder="Enter version (e.g., 1.0.0)"
+                                            value={version}
+                                            onChange={(e) => setVersion(e.target.value)}
+                                        />
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="d-flex justify-content-between align-items-center mb-2">
+                                            <label className="small mb-1" htmlFor="apkFileInput">
+                                                APK File <em>*</em>
+                                            </label>
+                                            {currentApk?.apkUrl && (
+                                                <a
+                                                    href={currentApk.apkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    style={{ fontSize: "12px", color: "#2563eb", fontWeight: "600", textDecoration: "none" }}
+                                                >
+                                                    <i className="fas fa-download me-1"></i> Download Current
+                                                </a>
+                                            )}
+                                        </div>
+                                        <input
+                                            id="apkFileInput"
+                                            type="file"
+                                            className="form-control form-control-solid"
+                                            accept=".apk,application/vnd.android.package-archive"
+                                            onChange={handleFileChange}
+                                        />
+                                        {fileName && (
+                                            <div className="mt-2" style={{
+                                                padding: "8px 12px",
+                                                background: "#f0f0f0",
+                                                borderRadius: "6px",
+                                                fontSize: "13px",
+                                                color: "#666"
+                                            }}>
+                                                Selected: {fileName} {fileSize && `(${fileSize} MB)`}
+                                            </div>
+                                        )}
+                                        {currentApk?.updatedAt && (
+                                            <div className="mt-1" style={{ fontSize: "11px", color: "#9ca3af" }}>
+                                                Last Updated: {new Date(currentApk.updatedAt).toLocaleString()}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <button
+                                    className="btn btn-indigo"
+                                    type="button"
+                                    onClick={handleUpdateApk}
+                                    disabled={!version || !apkFile}
+                                >
+                                    Update APK
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            )}
+            </main>
         </div>
     );
-};
+}
 
 export default UpdateApk;
 

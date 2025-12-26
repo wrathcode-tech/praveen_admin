@@ -49,7 +49,7 @@ import AffiliateList from "../ui/pages/AffiliateList";
 import AffiliatePayout from "../ui/pages/AffiliatePayout";
 import VerifyKyc from "../ui/pages/VerifyKyc";
 import InverstorUpdates from "../ui/pages/InvestorUpdate";
-import AddTraders from "../ui/pages/TradeList/AddTraders";
+// import AddTraders from "../ui/pages/TradeList/AddTraders";
 import DisputeManagement from "../ui/pages/P2PManagement/DisputeManagement";
 import DisputeDetails from "../ui/pages/P2PManagement/DisputeDetails";
 import FiatCurrencyManagement from "../ui/pages/P2PManagement/FiatCurrencyManagement";
@@ -116,7 +116,7 @@ const Routing = () => {
                             <Route exect path="Blog" element={<Blog />}></Route>
                             <Route exect path="affiliatePayout" element={<AffiliatePayout />}></Route>
                             <Route exect path="inverstorUpdates" element={<InverstorUpdates />}></Route>
-                            <Route exect path="addtraders" element={<AddTraders />}></Route>
+                            {/* <Route exect path="addtraders" element={<AddTraders />}></Route> */}
                             <Route exect path="AdminDebitCreditTrans" element={<AdminDebitCreditTrans />}></Route>
                             <Route path="user-details/:userId" element={<UserDetailsPage />} />
                             <Route path="dispute_management" element={<DisputeManagement />} ></Route>

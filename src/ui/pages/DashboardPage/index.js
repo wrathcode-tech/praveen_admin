@@ -63,7 +63,7 @@ const DashboardPage = () => {
                                         <div className="collapse" id="collapseTraders" data-bs-parent="#accordionSidenav">
                                             <nav className="sidenav-menu-nested nav">
                                                 <Link className={`nav-link  ${actived?.includes('tradelist') || actived === "tradelist" ? 'active' : ''}`} to="tradelist" onClick={() => { setActived('tradelist'); setIsSidebar(true); }}>Traders List</Link>
-                                                <Link className={`nav-link  ${actived?.includes('addtraders') || actived === "addtraders" ? 'active' : ''}`} to="addtraders" onClick={() => { setActived('addtraders'); setIsSidebar(true); }}>Add New Trader</Link>
+                                                {/* <Link className={`nav-link  ${actived?.includes('addtraders') || actived === "addtraders" ? 'active' : ''}`} to="addtraders" onClick={() => { setActived('addtraders'); setIsSidebar(true); }}>Add New Trader</Link> */}
                                             </nav>
                                         </div>
                                     </>

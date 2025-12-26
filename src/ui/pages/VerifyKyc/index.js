@@ -8,7 +8,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import { ApiConfig } from "../../../api/apiConfig/ApiConfig";
 const VerifyKyc = () => {
-  const {userId} = useParams()
+  const { userId } = useParams()
   const [showImage, setShowImage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,6 +30,7 @@ const VerifyKyc = () => {
   const [rejectReason, setRejectReason] = useState("");
   const [activeScreen, setActiveScreen] = useState("pending");
   const [country, setCountry] = useState("");
+  const [kycStatus, setKycStatus] = useState(null);
 
 
   const handleInputChange = (event) => {
@@ -47,12 +48,12 @@ const VerifyKyc = () => {
   }, []);
 
   const handleData = async (userId) => {
-try {
+    try {
       LoaderHelper.loaderStatus(true);
       await AuthService.getkycdata(userId).then(async (result) => {
         if (result?.success) {
           try {
-  
+
             setFirstName(result?.data?.first_name);
             setCountry(result?.data?.country);
             setLastName(result?.data?.last_name);
@@ -71,12 +72,13 @@ try {
             setDocFrontImg(result?.data?.document_front_image);
             setDocBackImg(result?.data?.document_back_image);
             setDate(result?.data?.updatedAt);
+            setKycStatus(result?.data?.kycVerified);
           } catch (error) {
             alertErrorMessage("Unauthorized");
           }
         }
       });
-} finally{ LoaderHelper.loaderStatus(false);}
+    } finally { LoaderHelper.loaderStatus(false); }
   };
 
   const verifyIdentity = async (id, status, rejectReason) => {
@@ -100,13 +102,13 @@ try {
     );
   };
 
-const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleImageDetail = (img) => {
     setShowImage(img);
   };
 
-  return  (
+  return (
     <>
       <div id="layoutSidenav_content">
         <main>
@@ -118,42 +120,44 @@ const navigate = useNavigate()
                     <div className="col-auto mt-4">
                       <h1 className="page-header-title">
                         <Link
-                       to="#"
-                       className="page-header-icon"
-                       onClick={(e) => {
-                         e.preventDefault(); // prevent default anchor behavior
-                         navigate(-1);
-                       }}
+                          to="#"
+                          className="page-header-icon"
+                          onClick={(e) => {
+                            e.preventDefault(); // prevent default anchor behavior
+                            navigate(-1);
+                          }}
                         >
                           <i className="fa fa-arrow-left"></i>
                         </Link>
                         {firstName} {lastName}
                       </h1>
                     </div>
-                    <div className="col-auto mt-4">
-                      <div className="row">
-                        <div className="d-flex">
-                          <button
-                            className="btn btn-danger btn-block"
-                            data-bs-toggle="modal"
-                            data-bs-target="#rejectmodal"
-                            type="button"
-                         
-                          >
-                            Reject
-                          </button>
-                          <button
-                            className="btn mx-2 btn-success btn-block"
-                            type="button"
-                            onClick={() => {
-                              verifyIdentity(userId, 2);
-                            }}
-                          >
-                            Approve
-                          </button>
+                    {kycStatus === 1 && (
+                      <div className="col-auto mt-4">
+                        <div className="row">
+                          <div className="d-flex">
+                            <button
+                              className="btn btn-danger btn-block"
+                              data-bs-toggle="modal"
+                              data-bs-target="#rejectmodal"
+                              type="button"
+
+                            >
+                              Reject
+                            </button>
+                            <button
+                              className="btn mx-2 btn-success btn-block"
+                              type="button"
+                              onClick={() => {
+                                verifyIdentity(userId, 2);
+                              }}
+                            >
+                              Approve
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -207,13 +211,13 @@ const navigate = useNavigate()
                         </div>
                         <div className="row mb-3">
                           <label className="col-lg-5 fw-bold text-muted">
-                          Country:
+                            Country:
                           </label>
                           <div className="col-lg-7 fv-row">
                             <span className="fw-bold fs-6 text-dark">{country}</span>
                           </div>
                         </div>
-                  
+
                         <div className="row mb-3">
                           <label className="col-lg-5 fw-bold text-muted">
                             State:
@@ -480,7 +484,7 @@ const navigate = useNavigate()
       </div>
       {/* Image Detail  */}
     </>
-  ) 
+  )
 };
 
 export default VerifyKyc;

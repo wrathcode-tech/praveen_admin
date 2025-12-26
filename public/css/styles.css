@@ -20804,6 +20804,69 @@ header.page-header .mt-4 {
 .avatar-online::before {
   background-color: #00ac69;
 }
+.form-control[type="file"] {
+  background-color: transparent !important;
+  color: #ffffff;
+  border: 1px solid #6aa84f;
+  border-radius: 25px;
+  padding: 14px 23px;
+  cursor: pointer;
+}
+
+/* File select button */
+.form-control[type="file"]::file-selector-button {
+  background: #414141;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background 0.2s ease;
+}
+
+/* Hover + Focus + Active (IMPORTANT) */
+.form-control[type="file"]::file-selector-button:hover,
+.form-control[type="file"]::file-selector-button:focus,
+.form-control[type="file"]::file-selector-button:active {
+  background: #414141 !important;
+  color: #ffffff;
+}
+
+/* Old Chrome / Edge */
+.form-control[type="file"]::-webkit-file-upload-button,
+.form-control[type="file"]::-webkit-file-upload-button:hover,
+.form-control[type="file"]::-webkit-file-upload-button:focus,
+.form-control[type="file"]::-webkit-file-upload-button:active {
+  background: #414141 !important;
+  color: #ffffff;
+  border: none;
+}
+
+.form-select {
+  background-color: #0f0f0f00 !important;
+  border: 1px solid #2e2e2e;
+  border-radius: 25px;
+  padding: 10px 16px;
+  border-bottom: none;
+}
+
+/* dropdown options */
+.form-select option {
+  background-color: #e0e0e0;   /* gray background */
+  color: #000000;              /* black text */
+}
+
+
+
+/* remove default arrow styling */
+select.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
 
 .btn {
   display: inline-flex;

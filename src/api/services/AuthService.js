@@ -3379,10 +3379,10 @@ const AuthService = {
     return ApiCallGet(url, headers);
   },
 
-  uploadApk: async (formData) => {
+  updateApk: async (formData) => {
     const token = sessionStorage.getItem("token");
-    const { baseAdmin, uploadApk } = ApiConfig;
-    const url = baseAdmin + uploadApk;
+    const { baseAdmin, updateApk } = ApiConfig;
+    const url = baseAdmin + updateApk;
     const headers = {
       "Content-Type": "multipart/form-data",
       Authorization: token,
