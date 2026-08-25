@@ -59,6 +59,11 @@ import P2POrdersManagement from "../ui/pages/P2PManagement/P2POrdersManagement";
 import P2POrderDetails from "../ui/pages/P2PManagement/P2POrderDetails";
 import UserPaymentMethods from "../ui/pages/P2PManagement/UserPaymentMethods";
 import UpdateApk from "../ui/pages/UpdateApk";
+import CopyTradingMasterList from "../ui/pages/CopyTrading/MasterList";
+import CopyTradingMasterForm from "../ui/pages/CopyTrading/MasterForm";
+import CopyTradingMasterDetail from "../ui/pages/CopyTrading/MasterDetail";
+import CopyTradingPlaceTrade from "../ui/pages/CopyTrading/PlaceTrade";
+import CopyTradingTradeList from "../ui/pages/CopyTrading/TradeList";
 
 const Routing = () => {
     const [actived, setActived] = useState('')
@@ -128,6 +133,12 @@ const Routing = () => {
                             <Route path="p2p-order-details" element={<P2POrderDetails />} ></Route>
                             <Route path="p2p-user-payment-methods" element={<UserPaymentMethods />} ></Route>
                             <Route path="UpdateApk" element={<UpdateApk />} ></Route>
+                            <Route path="copy-trading/masters" element={<CopyTradingMasterList />} ></Route>
+                            <Route path="copy-trading/add-master" element={<CopyTradingMasterForm />} ></Route>
+                            <Route path="copy-trading/edit-master/:masterId" element={<CopyTradingMasterForm />} ></Route>
+                            <Route path="copy-trading/master/:masterId" element={<CopyTradingMasterDetail />} ></Route>
+                            <Route path="copy-trading/place-trade" element={<CopyTradingPlaceTrade />} ></Route>
+                            <Route path="copy-trading/trades" element={<CopyTradingTradeList />} ></Route>
                         </Route>
 
                     </> :

@@ -12,9 +12,7 @@ const DashboardPage = () => {
     let permissions = Array.isArray(JSON.parse(myPermission)) ? JSON.parse(myPermission)?.map(x => x.value) : [];
 
     useEffect(() => {
-        let URL = window.location.href?.split('/');
-        let route = URL.pop();
-        setActived(route)
+        setActived(window.location.pathname || '');
     }, []);
 
     return (
@@ -299,6 +297,24 @@ const DashboardPage = () => {
                                         <div className="nav-link-icon"><i class="fa fa-user"></i></div>
                                         Update APK
                                     </Link>
+                                    : null
+                                }
+                                {permissions.includes(26) || userType === '1' ?
+                                    <>
+                                        <div className={`nav-link collapsed ${actived?.includes('copy-trading') ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseCopyTrading" aria-expanded="false" aria-controls="collapseCopyTrading">
+                                            <div className="nav-link-icon"><i className="fa fa-copy"></i></div>
+                                            Copy Trading
+                                            <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                                        </div>
+                                        <div className="collapse" id="collapseCopyTrading" data-bs-parent="#accordionSidenav">
+                                            <nav className="sidenav-menu-nested nav">
+                                                <Link className={`nav-link ${actived?.includes('copy-trading/masters') || actived?.includes('copy-trading/edit-master') || actived?.includes('copy-trading/master/') ? 'active' : ''}`} to="copy-trading/masters" onClick={() => { setActived('copy-trading/masters'); setIsSidebar(true); }}>Masters List</Link>
+                                                <Link className={`nav-link ${actived?.includes('copy-trading/add-master') ? 'active' : ''}`} to="copy-trading/add-master" onClick={() => { setActived('copy-trading/add-master'); setIsSidebar(true); }}>Add Master</Link>
+                                                <Link className={`nav-link ${actived?.includes('copy-trading/place-trade') ? 'active' : ''}`} to="copy-trading/place-trade" onClick={() => { setActived('copy-trading/place-trade'); setIsSidebar(true); }}>Place Trade</Link>
+                                                <Link className={`nav-link ${actived?.includes('copy-trading/trades') ? 'active' : ''}`} to="copy-trading/trades" onClick={() => { setActived('copy-trading/trades'); setIsSidebar(true); }}>Trades List</Link>
+                                            </nav>
+                                        </div>
+                                    </>
                                     : null
                                 }
                                 {/* {permissions.includes(20) || userType === '1' ?

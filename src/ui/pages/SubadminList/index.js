@@ -233,6 +233,10 @@ const SubAdmin = () => {
             value: 21,
             label: 'User Wallet Balance'
         },
+        {
+            value: 26,
+            label: 'Copy Trading'
+        },
 
     ];
 

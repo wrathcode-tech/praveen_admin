@@ -75,7 +75,16 @@ export const ApiCallGet = async (url, headers) => {
 
 export const ApiCallPut = async (url, parameters, headers) => {
   try {
-    const response = await axios.put(url, parameters, { headers: headers });
+    const isFormData = parameters instanceof FormData;
+    const config = {
+      headers: headers,
+      ...(isFormData && {
+        maxContentLength: Infinity,
+        maxBodyLength: Infinity,
+        timeout: 300000,
+      })
+    };
+    const response = await axios.put(url, parameters, config);
     return response.data;
   } catch (error) {
     if (error.response.data.message === "Token is expired" || error.response.data.message === "Admin not found this email" || error.response.data.message === "Admin does not have access" || error.response.data.message === "Unauthorized Request!") {

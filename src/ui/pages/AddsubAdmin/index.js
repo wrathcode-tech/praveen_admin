@@ -156,6 +156,10 @@ const AddsubAdmin = () => {
             value: 25,
             label: 'Announcement Banner Management'
         },
+        {
+            value: 26,
+            label: 'Copy Trading'
+        },
   
 
 

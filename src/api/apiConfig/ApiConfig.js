@@ -283,6 +283,16 @@ export const ApiConfig = {
   availableWalletTypes: "available-wallet-types",
   updateApk: "updateApk",
   getApkList: "getApk",
+
+  // Copy Trading
+  copyTradingMasterCreate: "copy-trading/master/create",
+  copyTradingMasterUpdate: "copy-trading/master/update",
+  copyTradingMasterList: "copy-trading/master/list",
+  copyTradingMasterDetail: "copy-trading/master/",
+  copyTradingTradePlace: "copy-trading/trade/place",
+  copyTradingTradeUpdateStatus: "copy-trading/trade/update-status",
+  copyTradingTradeList: "copy-trading/trade/list",
+  copyTradingPairLivePrice: "copy-trading/pair-live-price",
   // updateApkStatus: "update-apk-status",
   // deleteApk: "delete-apk",
 

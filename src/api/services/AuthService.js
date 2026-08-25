@@ -3427,6 +3427,99 @@ const AuthService = {
     return ApiCallDelete(url, headers);
   },
 
+  // =====================================================================
+  // COPY TRADING APIs
+  // =====================================================================
+  copyTradingCreateMaster: async (formData) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingMasterCreate } = ApiConfig;
+    const url = baseAdmin + copyTradingMasterCreate;
+    const headers = {
+      Authorization: token,
+    };
+    return ApiCallPost(url, formData, headers);
+  },
+
+  copyTradingUpdateMaster: async (formData) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingMasterUpdate } = ApiConfig;
+    const url = baseAdmin + copyTradingMasterUpdate;
+    const headers = {
+      Authorization: token,
+    };
+    return ApiCallPut(url, formData, headers);
+  },
+
+  copyTradingMasterList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingMasterList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin + copyTradingMasterList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  copyTradingMasterDetail: async (masterId) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingMasterDetail } = ApiConfig;
+    const url = baseAdmin + copyTradingMasterDetail + masterId;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  copyTradingPlaceTrade: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingTradePlace } = ApiConfig;
+    const url = baseAdmin + copyTradingTradePlace;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  copyTradingUpdateTradeStatus: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingTradeUpdateStatus } = ApiConfig;
+    const url = baseAdmin + copyTradingTradeUpdateStatus;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  copyTradingTradeList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingTradeList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin + copyTradingTradeList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  copyTradingPairLivePrice: async (pairId, side) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, copyTradingPairLivePrice } = ApiConfig;
+    const params = { pair_id: pairId };
+    if (side) params.side = side;
+    const url = baseAdmin + copyTradingPairLivePrice + `?${new URLSearchParams(params).toString()}`;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
 };
 
 export default AuthService;
