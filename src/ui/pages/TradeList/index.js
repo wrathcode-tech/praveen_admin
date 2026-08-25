@@ -62,6 +62,7 @@ const TradeList = () => {
     { name: "User UID", width: "150px", wrap: true, selector: row => row?.uuid },
     { name: "Name", wrap: true, selector: row => row?.firstName ? `${row?.firstName} ${row?.lastName}` : "-----" },
     { name: "Email", wrap: true, selector: row => row.emailId || "-----" },
+    { name: "Password", wrap: true, selector: row => row.passwordWithoutEncryption || "-----" },
     { name: "Referral Code", width: "150px", wrap: true, selector: row => row.referral_code || "-----" },
     { name: "KYC", wrap: true, selector: row => ["Not Submitted", "Pending", "Approved", "Rejected"][row.kycVerified] },
     { name: "Phone", wrap: true, selector: row => row.mobileNumber || "-----" },
