@@ -293,6 +293,15 @@ export const ApiConfig = {
   copyTradingTradeUpdateStatus: "copy-trading/trade/update-status",
   copyTradingTradeList: "copy-trading/trade/list",
   copyTradingPairLivePrice: "copy-trading/pair-live-price",
+
+  // Deposit Address
+  depositAddressAdd: "deposit-address/add",
+  depositAddressList: "deposit-address/list",
+  depositAddressUpdate: "deposit-address/update",
+  depositAddressUpdateStatus: "deposit-address/update-status",
+  depositAddressDelete: "deposit-address/delete",
+  manualDepositRequestList: "manual-deposit-request/list",
+  manualDepositRequestUpdateStatus: "manual-deposit-request/update-status",
   // updateApkStatus: "update-apk-status",
   // deleteApk: "delete-apk",
 

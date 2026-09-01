@@ -237,6 +237,10 @@ const SubAdmin = () => {
             value: 26,
             label: 'Copy Trading'
         },
+        {
+            value: 27,
+            label: 'Manage Deposit Address'
+        },
 
     ];
 

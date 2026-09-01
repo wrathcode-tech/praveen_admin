@@ -123,10 +123,15 @@ const DashboardPage = () => {
 
                                 {permissions.includes(11) || userType === '1' ?
                                     <>
-                                        <div className={`nav-link collapsed ${(actived?.includes('fundsDManagement') || actived?.includes('FundsPendingDeposit') || actived?.includes('FundsCancelledDeposit')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseFundsManagement" aria-expanded="false" aria-controls="collapseSubAdmin">
+                                        <div className={`nav-link collapsed ${(actived?.includes('fundsDManagement') || actived?.includes('FundsPendingDeposit') || actived?.includes('FundsCancelledDeposit') || actived?.includes('manual-deposit-request')) ? 'active' : ''}`} data-bs-toggle="collapse" data-bs-target="#collapseFundsManagement" aria-expanded="false" aria-controls="collapseSubAdmin">
                                             <div className="nav-link-icon"><i className="fa fa-dollar-sign"></i></div>
                                             Funds Deposit Management
                                             <div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
+                                        </div>
+                                        <div className="collapse" id="collapseFundsManagement" data-bs-parent="#accordionSidenav">
+                                            <nav className="sidenav-menu-nested nav">
+                                                <Link className={`nav-link  ${actived?.includes('manual-deposit-request') ? 'active' : ''}`} to="manual-deposit-request" onClick={() => { setActived('manual-deposit-request'); setIsSidebar(true); }}>Pending Deposit</Link>
+                                            </nav>
                                         </div>
                                         <div className="collapse" id="collapseFundsManagement" data-bs-parent="#accordionSidenav">
                                             <nav className="sidenav-menu-nested nav">
@@ -315,6 +320,13 @@ const DashboardPage = () => {
                                             </nav>
                                         </div>
                                     </>
+                                    : null
+                                }
+                                {permissions.includes(27) || userType === '1' ?
+                                    <Link className={`nav-link collapsed ${actived?.includes('deposit-address') ? 'active' : ''}`} to="deposit-address" onClick={() => { setActived('deposit-address'); setIsSidebar(true); }}>
+                                        <div className="nav-link-icon"><i className="fa fa-wallet"></i></div>
+                                        Manage Deposit Address
+                                    </Link>
                                     : null
                                 }
                                 {/* {permissions.includes(20) || userType === '1' ?

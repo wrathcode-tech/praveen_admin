@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-jquery-plugin": "^1.1.7",
     "react-paginate": "^8.2.0",
+    "react-qr-code": "^2.2.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.30.2",
     "react-scripts": "5.0.1",

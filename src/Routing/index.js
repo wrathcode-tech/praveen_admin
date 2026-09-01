@@ -64,6 +64,8 @@ import CopyTradingMasterForm from "../ui/pages/CopyTrading/MasterForm";
 import CopyTradingMasterDetail from "../ui/pages/CopyTrading/MasterDetail";
 import CopyTradingPlaceTrade from "../ui/pages/CopyTrading/PlaceTrade";
 import CopyTradingTradeList from "../ui/pages/CopyTrading/TradeList";
+import DepositAddress from "../ui/pages/DepositAddress";
+import ManualDepositRequest from "../ui/pages/ManualDepositRequest";
 
 const Routing = () => {
     const [actived, setActived] = useState('')
@@ -139,6 +141,8 @@ const Routing = () => {
                             <Route path="copy-trading/master/:masterId" element={<CopyTradingMasterDetail />} ></Route>
                             <Route path="copy-trading/place-trade" element={<CopyTradingPlaceTrade />} ></Route>
                             <Route path="copy-trading/trades" element={<CopyTradingTradeList />} ></Route>
+                            <Route path="deposit-address" element={<DepositAddress />} ></Route>
+                            <Route path="manual-deposit-request" element={<ManualDepositRequest />} ></Route>
                         </Route>
 
                     </> :

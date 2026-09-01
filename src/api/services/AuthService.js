@@ -3520,6 +3520,91 @@ const AuthService = {
     return ApiCallGet(url, headers);
   },
 
+  // =====================================================================
+  // DEPOSIT ADDRESS APIs
+  // =====================================================================
+  depositAddressAdd: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, depositAddressAdd } = ApiConfig;
+    const url = baseAdmin + depositAddressAdd;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  depositAddressList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, depositAddressList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin + depositAddressList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  depositAddressUpdate: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, depositAddressUpdate } = ApiConfig;
+    const url = baseAdmin + depositAddressUpdate;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPut(url, data, headers);
+  },
+
+  depositAddressUpdateStatus: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, depositAddressUpdateStatus } = ApiConfig;
+    const url = baseAdmin + depositAddressUpdateStatus;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  depositAddressDelete: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, depositAddressDelete } = ApiConfig;
+    const url = baseAdmin + depositAddressDelete;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
+  // =====================================================================
+  // MANUAL DEPOSIT REQUEST APIs
+  // =====================================================================
+  manualDepositRequestList: async (params = {}) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, manualDepositRequestList } = ApiConfig;
+    const queryString = new URLSearchParams(params).toString();
+    const url = baseAdmin + manualDepositRequestList + (queryString ? `?${queryString}` : "");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallGet(url, headers);
+  },
+
+  manualDepositRequestUpdateStatus: async (data) => {
+    const token = sessionStorage.getItem("token");
+    const { baseAdmin, manualDepositRequestUpdateStatus } = ApiConfig;
+    const url = baseAdmin + manualDepositRequestUpdateStatus;
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    return ApiCallPost(url, data, headers);
+  },
+
 };
 
 export default AuthService;
